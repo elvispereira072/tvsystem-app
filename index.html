@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Televisão</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden; /* Para evitar barras de rolagem horizontais */
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            position: relative; /* Necessário para o z-index funcionar */
+            z-index: 1; /* Garante que o header esteja sobre o vídeo de fundo */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            height: 3px;
+            width: 25px;
+            background: #fff;
+            margin: 4px 0;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative; /* Para z-index funcionar */
+            z-index: 2; /* Garante que o conteúdo esteja sobre o vídeo de fundo */
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2{
+            color: white;
+        }
+
+        h1{
+            color:white;
+        
+        }
+
+       p{
+        color:white;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                background: #333;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                transition: 0.3s;
+                z-index: 1; /* Garante que o menu esteja sobre o vídeo de fundo */
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+        }
+
+        /* Estilização específica para o vídeo de fundo */
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* Coloca o vídeo de fundo atrás de todo o conteúdo */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">TVSystem</div>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shows">Shows</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Welcome to TVSystem</h1>
+            <p>Enjoy the best shows and entertainment.</p>
+        </section>
+        <section id="shows">
+            <h2>Our Shows</h2>
+            <p>Discover our wide range of TV shows.</p>
+        </section>
+        <section id="schedule">
+            <h2>Schedule</h2>
+            <p>Check out our schedule to never miss your favorite show.</p>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Feel free to reach out to us with any questions or feedback.</p>
+        </section>
+    </main>
+    <video autoplay muted loop id="video-background">
+        <source src="assets/tv2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+
+
+
